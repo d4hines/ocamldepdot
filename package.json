@@ -1,0 +1,37 @@
+{
+  "name": "ocaml-dep-dot",
+  "version": "0.1.1",
+  "description": "Graphviz Dot file generator for Ocaml module dependencies",
+  "license": "MIT",
+  "esy": {
+    "buildsInSource": "_build",
+    "build": "dune build -p #{self.name}",
+    "buildDev": "dune build @install --only-package #{self.name} -w",
+    "NOTE": "Optional release Section. Customizes result of `esy release`",
+    "release": {
+      "rewritePrefix": true,
+      "bin": [
+        "ocamldepdot"
+      ]
+    },
+    "buildEnv": {
+      "ODOC_SYNTAX": "re"
+    }
+  },
+  "scripts": {
+    "test": "esy x ocamldepdot",
+    "format": "esy dune build @fmt --auto-promote",
+    "doc": "esy dune build @doc"
+  },
+  "dependencies": {
+    "@opam/dune": "^2.7.1",
+    "ocaml": "~4.11.0"
+  },
+  "devDependencies": {
+    "@opam/earlybird": "*",
+    "@opam/ocamlformat": "*",
+    "@opam/merlin": "*",
+    "@opam/odoc": "*",
+    "@opam/ocaml-lsp-server": "*"
+  }
+}

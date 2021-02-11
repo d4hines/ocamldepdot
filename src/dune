@@ -1,0 +1,5 @@
+(executable
+ (modes byte native)
+ (name ocamldepdot)
+ (public_name ocamldepdot)
+ (flags (:standard -alert -deprecated -w -27)))
