@@ -1,37 +1,32 @@
 {
   "name": "ocamldepdot",
-  "version": "0.1.1",
-  "description": "Graphviz Dot file generator for Ocaml module dependencies",
-  "license": "MIT",
   "esy": {
-    "buildsInSource": "_build",
-    "build": "dune build",
-    "buildDev": "dune build @install --only-package #{self.name} -w",
-    "NOTE": "Optional release Section. Customizes result of `esy release`",
+    "build": "dune build -p #{self.name}",
     "release": {
-      "rewritePrefix": true,
       "bin": [
         "ocamldepdot"
       ]
     },
     "buildEnv": {
-      "ODOC_SYNTAX": "re"
+      "PATH": "%{localStore}%/../bin:$PATH"
     }
   },
+  "license": "MIT",
   "scripts": {
-    "test": "esy x ocamldepdot",
-    "format": "esy dune build @fmt --auto-promote",
-    "doc": "esy dune build @doc"
+    "test": "dune test",
+    "format": "dune build @fmt --auto-promote",
+    "watch": "dune build --watch --terminal-persistence=clear-on-rebuild"
   },
   "dependencies": {
-    "@opam/dune": "*",
-    "ocaml": "*"
+    "ocaml": "4.*.*",
+    "@opam/dune": "*"
   },
   "devDependencies": {
-    "@opam/earlybird": "*",
-    "@opam/ocamlformat": "*",
-    "@opam/merlin": "*",
-    "@opam/odoc": "*",
-    "@opam/ocaml-lsp-server": "*"
+    "@opam/ocaml-lsp-server": "*",
+    "@opam/ocamlformat": "0.19.0",
+    "@opam/utop": "*"
+  },
+  "resolutions": {
+    "@esy-ocaml/rtop": "ManasJayanth/reason:rtop.json#cb5afe1df701cfc92321f2123fce2dcad39a02aa"
   }
 }
