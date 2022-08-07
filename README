@@ -8,12 +8,12 @@ program, dot.  Dot is freely available from
 Ocamldot is designed to process the output of ocamldep.  A typical use
 would be
 
-  ocamldep *.ml | ocamldot > dep.dot
+  ocamldep *.ml | nix run github:d4hines/ocamldepdot -- | dot -Tpng > modules.png
 
 or
 
-  ocamldep *.ml > .depend
-  ocamldot .depend > dep.dot
+  ocamldep *.ml > deps
+  nix run github:d4hines/ocamldepdot -- deps > deps.dot
 
 This will output a dot graph into the file dep.dot.  You can then use
 the program dotty to view, edit, and print the graph.
